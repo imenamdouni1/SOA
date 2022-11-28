@@ -12,8 +12,8 @@ class StudentList extends Component {
         <thead>
           <tr>
             <th>Name</th>
-            <th>familyName</th>
-            <th>group</th>
+            <th>family name</th>
+            <th>email</th>
             
             <th></th>
           </tr>
@@ -30,15 +30,15 @@ class StudentList extends Component {
               <tr key={student.id}>
                 <td>{student.name}</td>
                 <td>{student.familyName}</td>
-                <td>{student.group}</td>
+                <td>{student.email}</td>
                
                 <td align="center">
-                   {/* <NewStudentModal
+                   <NewStudentModal
                     create={false}
                     student={student}
                     resetState={this.props.resetState}
                   /> 
-                   &nbsp;&nbsp;  */}
+                   &nbsp;&nbsp; 
                   <ConfirmRemovalModal
                     pk={student.id}
                     resetState={this.props.resetState}

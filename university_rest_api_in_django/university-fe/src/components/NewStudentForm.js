@@ -10,14 +10,14 @@ class NewStudentForm extends React.Component {
     id:0,
     name: "",
     familyName:"",
-    group:"",
+    email:"",
   };
 
  componentDidMount() {
     if (this.props.student) {
-      const { id,name,familyName,group } = this.props.student;
-      this.setState({ id,name,familyName,group });
-      console.log("okkkk")
+      const { id,name,familyName,email } = this.props.student;
+      this.setState({ id,name,familyName,email });
+      console.log("okkkk",{ id,name,familyName,email })
     }
   }
 
@@ -33,10 +33,9 @@ class NewStudentForm extends React.Component {
       this.props.toggle();
     });
   };
-
   editStudent = e => {
     e.preventDefault();
-    axios.put(API_URL + 'student/update/'+this.state.id, this.state).then(() => {
+    axios.put(API_URL + 'students/'+this.state.id+'/', this.state).then(() => {
       this.props.resetState();
       this.props.toggle();
     });
@@ -51,30 +50,30 @@ class NewStudentForm extends React.Component {
     return (
       <Form onSubmit={this.props.student ? this.editStudent : this.createStudent }>
         <FormGroup>
-          <Label for="name">Name:</Label>
+          <Label for="name">Name*:</Label>
           <Input
             type="text"
             name="name"
             onChange={this.onChange}
-            //value={this.defaultIfEmpty(this.state.name)}
+            value={this.defaultIfEmpty(this.state.name)}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="familyName">familyName</Label>
+          <Label for="familyName">family Name*:</Label>
           <Input
             type="text"
             name="familyName"
             onChange={this.onChange}
-            //value={this.defaultIfEmpty(this.state.name)}
+            value={this.defaultIfEmpty(this.state.familyName)}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="group">group</Label>
+          <Label for="email">email</Label>
           <Input
             type="text"
-            name="group"
+            name="email"
             onChange={this.onChange}
-            //value={this.defaultIfEmpty(this.state.name)}
+            value={this.defaultIfEmpty(this.state.email)}
           />
         </FormGroup>
 
